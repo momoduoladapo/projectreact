@@ -12,18 +12,18 @@ class App extends Component {
 
   render() {
 
-    let word = 'Hello';
-    let style = {fontSize: '20px'};
-
-    const array = ['Welcome','To','My','Course'];
+    const style = {fontSize: '40px'};
+    const array = ['fix','them','bugs'];
 
       return (
-        <div>
-          <p style ={style} className="text-large">Hi</p>
+        <div className="header">
+          <p style ={style}>
+            I really love writing React!
+          </p>
 
           {array.map(word => {
             return(
-              <p name={word} className={word} id={word} key={word}>{word}</p>
+              <p key={word}>{word}</p>
             )
           })}
 
