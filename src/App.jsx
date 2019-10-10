@@ -1,39 +1,50 @@
-import React, {Component} from 'react';
-import logo from './logo.svg';
-import './App.css';
+// COPY THIS CODE INTO YOUR APP.JS
+// MAKE SURE YOU MAKE A BACKUP OF YOUR CURRENT CODE FIRST
+// CHANGE BACK AFTER YOU HAVE COMPLETED THE EXERCISE
 
-import NameComponent from './components/NameComponents.jsx';
+// Fix the bugs in this code and make it render without any errors.
 
-class App extends Component {
+import React, { Component } from 'react';
 
-  componentDidMount() { 
-    console.log("App Mounted"); 
+class Apps extends Component {
+
+  componentDidMount() {
+    console.log('App Mounted');
+  }
+
+  iLikeFunctions() {
+    console.log('yay functions');
   }
 
   render() {
 
-    let word = 'Hello';
-    let style = {fontSize: '20px'};
+    var array = ['here','we','go'];
 
-    const array = ['Welcome','To','My','Course'];
+    let no = 'yes';
+    const display = 'My Name';
 
-      return (
-        <div>
-          <p style ={style} className="text-large">Hi</p>
-
-          {array.map(word => {
-            return(
-              <p name={word} className={word} id={word} key={word}>{word}</p>
-            )
-          })}
-
-          <NameComponent />
-          <button onClick={() => {console.log('Hooray!!! Name Component Mounted On The App')}} >
-            <NameComponent />
-          </button> 
-        </div>
+    return (
+      <div>
+        <p>{display}</p>
+        <hr />
+        <input type="text" onChange={this.iLikeFunctions} />
+        <table>
+          <tbody>
+            {array.map((term,i) => {
+              no = 'no';
+              return (
+                <tr key={i}>
+                  <td>{term}</td>
+                  <td>{no}</td>
+                </tr>
+              )
+            })}
+          </tbody>
+        </table>
+      </div>
     );
+
   }
 }
 
-export default App;
+export default Apps;
