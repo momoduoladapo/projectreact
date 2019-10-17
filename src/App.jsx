@@ -1,39 +1,47 @@
-import React, {Component} from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { Component } from 'react';
 
-import NameComponent from './components/NameComponents.jsx';
+import DefaultChild from './DefaultChild';
+import OtherChild from './OtherChild';
 
-class App extends Component {
+class Apps extends Component {
 
-  componentDidMount() { 
-    console.log("App Mounted"); 
+  constructor(props) {
+    super(props);
+    this.state = {
+      child : 'default',
+    }
+  }
+
+  componentWillReceiveProps () {
+    
+  }
+
+  componentDidMount() {
+    console.log("App Mounted");
+  }
+
+  handleClick(e) {
+    console.log(e.target.value);
+    this.setState({
+      child : e.target.value
+    });
+
   }
 
   render() {
 
-    const style = {fontSize: '40px'};
-    const array = ['fix','them','bugs'];
-
-      return (
-        <div className="header">
-          <p style ={style}>
-            I really love writing React!
-          </p>
-
-          {array.map(word => {
-            return(
-              <p key={word}>{word}</p>
-            )
-          })}
-
-          <NameComponent />
-          <button onClick={() => {console.log('Hooray!!! Name Component Mounted On The App')}} >
-            <NameComponent />
-          </button> 
-        </div>
+    return (
+      <div style={{padding:'40px'}}>
+        <input type="radio" checked={this.state.child==='default' ? true : false} name="pickComponent" value="default" onChange={this.handleClick.bind(this)} /> Default
+        <br />
+        <input type="radio" checked={this.state.child==='other' ? true : false} name="pickComponent" value="other" onChange={this.handleClick.bind(this)} /> Other
+        <hr />
+        {this.state.child==='default' ? <DefaultChild /> : false}
+        {this.state.child==='other' ? <OtherChild /> : false}
+      </div>
     );
+
   }
 }
 
-export default App;
+export default Apps;
