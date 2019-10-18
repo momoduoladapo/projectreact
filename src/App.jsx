@@ -1,50 +1,50 @@
-// COPY THIS CODE INTO YOUR APP.JS
-// MAKE SURE YOU MAKE A BACKUP OF YOUR CURRENT CODE FIRST
-// CHANGE BACK AFTER YOU HAVE COMPLETED THE EXERCISE
+import React, {Component} from 'react';
+import NameComponent from './components/NameComponents';
 
-// Fix the bugs in this code and make it render without any errors.
-
-import React, { Component } from 'react';
-
-class Apps extends Component {
-
-  componentDidMount() {
-    console.log('App Mounted');
+class App extends Component {
+  
+  constructor(props) {
+    super(props);
+    this.state = {
+      user_name: 'Victor',
+      profession: 'Programmer'
+    };
   }
 
-  iLikeFunctions() {
-    console.log('yay functions');
+  componentDidUpdate() {
+    console.log('Changed');
+  }
+
+  componentDidMount() {
+    console.log('Mounted')
+  }
+
+  handleClick() {
+    this.setState({
+      user_name: "Victor Temprano",
+      profession: 'Academic'
+    });
   }
 
   render() {
 
-    var array = ['here','we','go'];
+    const {array} = this.state;
 
-    let no = 'yes';
-    const display = 'My Name';
+    const style = {fontSize: '40px'};
 
     return (
-      <div>
-        <p>{display}</p>
-        <hr />
-        <input type="text" onChange={this.iLikeFunctions} />
-        <table>
-          <tbody>
-            {array.map((term,i) => {
-              no = 'no';
-              return (
-                <tr key={i}>
-                  <td>{term}</td>
-                  <td>{no}</td>
-                </tr>
-              )
-            })}
-          </tbody>
-        </table>
+      <div className="header">
+        <p style={style}>
+          {this.state.user_name} - {this.state.profession}
+        </p>
+
+        <NameComponent  user_name={this.state.user_name}/>
+        <button onClick={this.handleClick.bind(this)}>
+          <NameComponent />
+        </button>
       </div>
     );
-
   }
 }
 
-export default Apps;
+export default App
